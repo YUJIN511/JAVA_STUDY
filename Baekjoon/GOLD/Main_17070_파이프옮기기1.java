@@ -9,7 +9,6 @@ public class Main_17070_파이프옮기기1 {
 	static int result;
 	static int house[][];	// 오른쪽, 아래 , 대각선
 	static int dir[][]= {{}, {0,1}, {1, 1}, {1, 0}};
-	static boolean visited[][];
 
 	public static void main(String[] args) throws Exception{
 		System.setIn(new FileInputStream("input.txt"));
@@ -17,7 +16,6 @@ public class Main_17070_파이프옮기기1 {
 		StringTokenizer st;
 		N = Integer.parseInt(br.readLine());
 		house = new int [N+1][N+1];
-		visited = new boolean [N+1][N+1];
 		
 		for(int i=1; i<=N; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -25,8 +23,6 @@ public class Main_17070_파이프옮기기1 {
 				house[i][j]=Integer.parseInt(st.nextToken());
 			}
 		}
-		visited[1][1]=true;
-		visited[1][2]=true;
 		result=0;
 		pipe(1,2,1);
 		
@@ -45,11 +41,9 @@ public class Main_17070_파이프옮기기1 {
 			
 			nr=r+dir[i][0];
 			nc=c+dir[i][1];
-			if(nr<=N && nc<=N && !visited[nr][nc] && house[nr][nc]!=1) {	// 경계 체크
+			if(nr<=N && nc<=N && house[nr][nc]!=1) {	// 경계 체크
 				if(i==2 && (house[nr-1][nc]==1 || house[nr][nc-1]==1)) continue;	// 대각선일 때 비어있어야하는 칸 체크
-				visited[nr][nc]=true;
 				pipe(nr, nc, i);
-				visited[nr][nc]=false;
 			}
 		}
 		
