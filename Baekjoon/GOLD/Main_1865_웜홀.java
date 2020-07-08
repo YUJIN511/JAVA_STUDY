@@ -60,7 +60,7 @@ public class Main_1865_웜홀 {
 			upper[1] = 0;
 				
 			boolean flag = false;
-			for(int i=1; i<=N; i++) {
+			for(int i=1; i<=N; i++) {	// N번이면 싸이클
 				flag=false;
 				
 				for(int v=1; v<=N; v++) {
